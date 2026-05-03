@@ -1,0 +1,113 @@
+/*
+ * styles.css - Visual Theme for the Intelligent Recommendation System
+ * This is the fixed visual layer of the project. It defines:
+ *   - Theme colors (dark purple background, accent colors)
+ *   - Page direction (LTR) and font settings
+ *   - Streamlit component fixes (metrics, buttons, sliders)
+ *   - Product card styling with hover animations
+ *   - Sidebar appearance
+ * This file connects the code output with a consistent display
+ * environment across all pages.
+ */
+
+/* ---- CSS Variables (Design Tokens) ---- */
+/* These variables define the color palette used throughout the app */
+:root {
+    --bg-main: #1A0B2E;      /* Main page background (dark purple) */
+    --bg-card: #2D1B4E;      /* Card and sidebar background */
+    --accent: #B794F4;        /* Accent color for highlights */
+    --text-main: #FFFFFF;     /* Primary text color */
+    --text-sec: #E9D8FD;      /* Secondary/lighter text color */
+    --success: #10B981;       /* Green color for success states */
+    --warning: #F59E0B;       /* Amber color for warnings and tags */
+}
+
+/* ---- Global Page Styling ---- */
+/* Apply the dark theme and font to the entire Streamlit app */
+body,
+.stApp {
+    background-color: var(--bg-main) !important;
+    color: var(--text-main) !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    direction: ltr;
+    text-align: left;
+}
+
+/* ---- Streamlit Component Fixes ---- */
+
+/* Align metric labels to the left */
+[data-testid="stMetricLabel"] {
+    justify-content: flex-start !important;
+}
+
+/* Center button text */
+.stButton>button {
+    text-align: center !important;
+}
+
+/* Ensure sliders display correctly in LTR direction */
+[data-testid="stSlider"] {
+    direction: ltr !important;
+}
+
+[data-testid="stSlider"] label {
+    text-align: left !important;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: flex-start !important;
+    direction: ltr !important;
+}
+
+[data-testid="stSlider"] div[role="slider"] {
+    direction: ltr !important;
+}
+
+[data-testid="stSlider"] div[data-baseweb="slider"] {
+    direction: ltr !important;
+}
+
+[data-testid="stSlider"] label p {
+    direction: ltr !important;
+    text-align: left !important;
+    margin: 0 !important;
+}
+
+/* ---- Product Card Styling ---- */
+/* These styles create the recommendation cards with hover animation */
+.product-card {
+    background-color: var(--bg-card);
+    border-top: 4px solid var(--accent);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+    text-align: left;
+}
+
+/* Card lifts up and glows on hover for interactive feel */
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 15px rgba(124, 58, 237, 0.2);
+}
+
+/* Product card title styling */
+.product-card h4 {
+    color: var(--success);
+    margin-top: 0;
+    font-size: 1.2rem;
+}
+
+/* Product card text styling */
+.product-card p {
+    color: var(--text-sec);
+    margin: 8px 0;
+    font-size: 0.95rem;
+}
+
+/* ---- Sidebar Styling ---- */
+/* Apply the card background color to the sidebar */
+.css-1d391kg,
+[data-testid="stSidebar"] {
+    background-color: var(--bg-card) !important;
+}
